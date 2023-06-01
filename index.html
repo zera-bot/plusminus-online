@@ -8,9 +8,13 @@
   <script src="assets/quill/mathquill.js"></script>
 
   <!-- KaTeX -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+    integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+    integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
   <!-- PyScript Stuff-->
@@ -18,6 +22,8 @@
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
   <!-- Scripts and Sheets for this Document-->
+  <title>PlusMinus Online</title>
+  <link rel="icon" href="assets/pm.png">
   <link rel="stylesheet" href="style.css">
 
 
@@ -30,19 +36,20 @@
 </head>
 
 <body>
+  <div id="background"></div>
   <div class="top-banner">
     <div id="banner" class="inline-block">
       <h1>
         <img style="vertical-align:middle" src="assets/pmitalic.png" width="50" height="50">
-        <span style=""><i>PlusMinus Online (beta)</i></span>
-        
+        <span><i>PlusMinus Online</i></span>
+
       </h1>
     </div>
   </div>
 
   <h1><span id="math-field"></span></h1>
   <button id="evaluateButton">Evaluate</button>
-  
+
   <p id="answer"></p>
   <p><span id="latex"></span></p>
 
@@ -50,24 +57,24 @@
     var mathFieldSpan = document.getElementById('math-field');
     var latexSpan = document.getElementById('latex');
 
-    var MQ = MathQuill.getInterface(2); 
+    var MQ = MathQuill.getInterface(2);
     var mathField = MQ.MathField(mathFieldSpan, {
       spaceBehavesLikeTab: true,
-      autoCommands: 'pi phi tau Gamma theta infty sqrt sum prod int pm mp lfloor rfloor lceil rceil binom',
+      autoCommands: 'pi phi tau Gamma theta infty sqrt sum prod int pm mp lfloor rfloor lceil rceil binom nthroot',
       autoOperatorNames: 'sin cos tan sinh cosh tanh csc sec cot',
       maxDepth: 729, //what is this :skull:
       handlers: {
-        edit: function () { 
-          latexSpan.textContent = mathField.latex(); 
+        edit: function () {
+          latexSpan.textContent = mathField.latex();
         }
       }
     });
   </script>
-  
+
   <py-script src="interpreter.py"></py-script>
 
   <div class="navbar">
-    <p id="version" >Version 1.0</p>
+    <p id="version">Version 1.2</p>
   </div>
 </body>
 
