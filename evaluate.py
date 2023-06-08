@@ -92,6 +92,11 @@ def mainSolve(lv,i=""):
           return solve(q,Symbol('x'),Symbol('y'),dict=True)
         except:
           return errors(1)
+      elif intention == "solvefor":
+        try:
+          return solve(q[0],q[1],dict=True)
+        except:
+          return errors(1)
       elif intention == "count":
         return len(q)
       elif intention == "countif":
@@ -193,6 +198,5 @@ def mainSolve(lv,i=""):
   except PrecisionExhausted:
     return errors(4)
   except:
-    raise
     return errors(0)
   
