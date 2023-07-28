@@ -83,6 +83,12 @@ def mainSolve(lv,i=""):
       if (intention == "decimal" or intention == "approx"):
         if type(results) == type([]):
           results = [N(k) for k in results]
+      elif intention == "inverse":
+        try:
+          swap = q.subs({Symbol("x"):Symbol("y"),Symbol("y"):Symbol("x")}, simultaneous=True)
+          results = solve(swap,Symbol('y'),dict=True)
+        except:
+          return errors(1)
       return results
     
     if type(q)==type([]): #intentions with multiple inputs
@@ -159,12 +165,6 @@ def mainSolve(lv,i=""):
         result = [re(q),im(q)]
       except:
         return errors(3)
-    elif intention == "inverse":
-      try:
-        swap = q.subs({Symbol("x"):Symbol("y"),Symbol("y"):Symbol("x")}, simultaneous=True)
-        return solve(swap,Symbol('y'),dict=True)
-      except:
-        return errors(1)
     elif intention == "decimal" or intention == "approx":
       result = N(q)
     else:
