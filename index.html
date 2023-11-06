@@ -25,6 +25,7 @@
   <title>PlusMinus Online</title>
   <link rel="icon" href="assets/pm.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
 
 
   <py-config>
@@ -73,9 +74,58 @@
 
   <py-script src="interpreter.py"></py-script>
 
-  <div class="navbar">
-    <p id="version">Version 1.6</p>
+  <!-- modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <img style="vertical-align:middle" src="assets/pmitalic.png" width="50" height="50">
+        <span><i>PlusMinus Online</i></span>
+      </div>
+      <div class="modal-body">
+        <p>PlusMinus Online is an online version of the calculation module of PlusMinus, a CAS graphing calculator. </p>
+        <p>It was coded in mostly Python using the CAS system <a href="https://www.sympy.org/en/index.html">Sympy</a>
+          and the source code for this website can be found <a
+            href="https://github.com/zera-bot/plusminus-online">here</a>.</p>
+        <p>The math format is LaTeX and <a href="http://mathquill.com/">MathQuill</a> is used for input.</p>
+        <p>If you need any help with the functions of this website, check out the <a
+            href="https://docs.google.com/document/d/16lxb3qLIK6MyMLQu_CzqyuFSaBEdy7YqviwxjKHT7pg/edit">User Manual</a>.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <h3>Version 1.7</h3>
+      </div>
+    </div>
   </div>
+
+  <div class="navbar">
+    <div style="display: inline-block;">
+      <p id="version">zera-bot 2023</p>
+    </div>
+    <div style="display: inline-block;"><button id="modalButton">About</button></div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("aboutModal");
+    var btn = document.getElementById("modalButton");
+    var closeSpan = document.getElementsByClassName("close")[0];
+
+    // open modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // close modal
+    closeSpan.onclick = function () {
+      modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 
 </html>
